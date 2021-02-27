@@ -110,16 +110,56 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Note">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/noteInput"
+                android:singleLine="true"
+                android:drawableStart="@drawable/note_icon"
+                android:drawablePadding="10dp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:lines="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
-    <Button
-        android:id="@+id/inputBtn"
-        android:layout_marginStart="75dp"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#214151"
-        android:text="add"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:gravity="start"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/inputBtn"
+            android:layout_marginStart="75dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#214151"
+            android:text="add"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#214151"
+            android:text="cancel"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
+    </LinearLayout>
+
+
 
 </LinearLayout>
