@@ -8,18 +8,34 @@
     android:orientation="vertical"
     tools:context=".presentation.form.FormFragment">
 
-    <com.google.android.material.textview.MaterialTextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:drawableEnd="@drawable/cart_"
-        app:drawableTint="@color/black"
-        android:drawablePadding="20dp"
-        android:text="Create Item"
-        android:textColor="@color/black"
-        android:textSize="25dp" />
+        android:layout_marginBottom="20dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/formTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:drawableTint="@color/black"
+            android:text="Create "
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/cart_"
+            app:drawableTint="@color/black"
+            android:drawablePadding="10dp"
+            android:text="Item"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,6 +47,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/dateTi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -51,6 +68,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/nameTi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -75,6 +93,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/priceTi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -94,6 +113,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/quantityTi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -113,6 +133,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/noteTi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"

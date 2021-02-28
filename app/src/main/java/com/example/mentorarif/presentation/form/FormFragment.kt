@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.example.mentorarif.R
 import com.example.mentorarif.data.model.Item
 import com.example.mentorarif.data.repository.ItemRepository
 import com.example.mentorarif.databinding.FragmentFormBinding
@@ -22,11 +23,17 @@ import java.util.*
 
 class FormFragment : Fragment() {
 
+    private var item : Item? = null
     private lateinit var binding: FragmentFormBinding
     private lateinit var viewModel: FormViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        arguments?.let {
+            item = it.getParcelable("edit_item")
+        }
+
         initViewModel()
         subscribe()
     }
@@ -38,28 +45,57 @@ class FormFragment : Fragment() {
         binding = FragmentFormBinding.inflate(layoutInflater)
 
         binding.apply {
+
+            item?.apply {
+                inputBtn.text = "UPDATE"
+                formTitle.text = "Edit "
+                dateTi.editText?.setText(date)
+                nameTi.editText?.setText(name)
+                priceTi.editText?.setText(price)
+                quantityTi.editText?.setText(quantity)
+                noteTi.editText?.setText(note)
+            }
+
             inputBtn.setOnClickListener{
+
                 val formatter: NumberFormat = DecimalFormat("#,###")
-                val price = priceInput.text.toString().toInt()
-                val formattedPrice: String = formatter.format(price)
 
-                val item = Item(
-                    name = itemNameInput.text.toString(),
-                    note = noteInput.text.toString(),
-                    quantity = quantityInput.text.toString(),
-                    price = formattedPrice,
-                    date = dateInput.text.toString(),
-                    id = ""
-                )
+                if (item == null){
 
-                viewModel.save(item)
+                    item = Item(
+                            name = itemNameInput.text.toString(),
+                            note = noteInput.text.toString(),
+                            quantity = quantityInput.text.toString(),
+                            price = formatter.format(priceInput.text.toString().toInt()),
+                            date = dateInput.text.toString(),
+                            id = ""
+                    )
+                } else {
+                    item?.let {
+                        item = Item(
+                                id = it.id,
+                                name = itemNameInput.text.toString(),
+                                note = noteInput.text.toString(),
+                                quantity = quantityInput.text.toString(),
+                                price = formatter.format(priceInput.text.toString().toInt()),
+                                date = dateInput.text.toString()
+                        )
+                    }
+                }
+
+                viewModel.save(item!!)
                 itemNameInput.text?.clear()
                 noteInput.text?.clear()
                 quantityInput.text?.clear()
                 priceInput.text?.clear()
                 dateInput.text?.clear()
             }
-            cancelBtn.setOnClickListener {
+
+            if (inputBtn.text == "UPDATE"){
+                cancelBtn.setOnClickListener {
+                    Navigation.findNavController(requireView()).navigate(R.id.action_formFragment_to_listFragment)
+                }
+            } else cancelBtn.setOnClickListener {
                 Navigation.findNavController(requireView()).popBackStack()
             }
         }

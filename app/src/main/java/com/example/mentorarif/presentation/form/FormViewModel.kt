@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mentorarif.data.model.Item
-import com.example.mentorarif.data.repository.ItemRepositoryInterface
+import com.example.mentorarif.data.repository.ItemRepository
 
-class FormViewModel(private val repository: ItemRepositoryInterface): ViewModel()  {
+class FormViewModel(private val repository: ItemRepository): ViewModel()  {
     var _itemLiveData = MutableLiveData<Item>()
 
     val itemLiveData: LiveData<Item>

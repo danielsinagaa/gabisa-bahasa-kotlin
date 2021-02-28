@@ -9,7 +9,11 @@
         android:id="@+id/formFragment"
         android:name="com.example.mentorarif.presentation.form.FormFragment"
         android:label="fragment_form"
-        tools:layout="@layout/fragment_form" />
+        tools:layout="@layout/fragment_form" >
+        <action
+            android:id="@+id/action_formFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.example.mentorarif.presentation.menu.MenuFragment"
@@ -26,5 +30,10 @@
         android:id="@+id/listFragment"
         android:name="com.example.mentorarif.presentation.list.ListFragment"
         android:label="fragment_list"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_listFragment_to_formFragment"
+            app:destination="@id/formFragment"
+            app:popUpTo="@id/menuFragment" />
+    </fragment>
 </navigation>

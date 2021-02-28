@@ -9,26 +9,26 @@ class ItemRepository : ItemRepositoryInterface {
             Item(
                 UUID.randomUUID().toString(),
                 "1/1/2020",
-                "123",
+                "111",
                 "aaa",
-                "123",
-                "note"
+                "111",
+                "note1"
             ),
             Item(
                 UUID.randomUUID().toString(),
                 "2/1/2020",
-                "123",
-                "aaa",
-                "123",
-                "note"
+                "222",
+                "bbb",
+                "222",
+                "note2"
             ),
             Item(
                 UUID.randomUUID().toString(),
                 "1/3/2020",
-                "123",
-                "aaa",
-                "123",
-                "note"
+                "333",
+                "ccc",
+                "333",
+                "note3"
             )
         )
     }
@@ -39,7 +39,21 @@ class ItemRepository : ItemRepositoryInterface {
         if(item.id.equals("")){
             item.id = UUID.randomUUID().toString()
             itemList.add(item)
+        }else {
+            val data = itemList.filter {
+                it.id == item.id
+            }
+            val index = itemList.indexOf(data.single())
+            itemList[index] = item
         }
         return item
     }
+
+    override fun delete(item: Item): Item {
+        itemList.removeAt(itemList.indexOf(item))
+        return item
+    }
+
+    override fun findByItem(item: Item): Item = itemList.get(itemList.indexOf(item))
+
 }

@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.latihanframgent.list.ListViewAdapter
+import com.example.mentorarif.R
 import com.example.mentorarif.data.repository.ItemRepository
 import com.example.mentorarif.databinding.FragmentListBinding
 
@@ -31,7 +34,7 @@ class ListFragment : Fragment() {
     ): View? {
         binding = FragmentListBinding.inflate(layoutInflater)
         binding.apply {
-            rvAdapter = ListViewAdapter()
+            rvAdapter = ListViewAdapter(viewModel)
             itemRecyclerView.apply {
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = rvAdapter
@@ -57,6 +60,13 @@ class ListFragment : Fragment() {
     private fun subscribe() {
         viewModel.itemLiveData.observe(this) {
             rvAdapter.setData(it)
+        }
+
+        viewModel.itemLiveData_.observe(this) {
+            Navigation.findNavController(requireView()).navigate(
+                    R.id.action_listFragment_to_formFragment,
+                    bundleOf("edit_item" to it)
+            )
         }
     }
 }

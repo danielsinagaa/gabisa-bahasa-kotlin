@@ -10,7 +10,7 @@
     android:layout_marginRight="16dp"
     android:clickable="true"
     android:foreground="?selectableItemBackground"
-    card_view:cardBackgroundColor="#FFFF"
+    card_view:cardBackgroundColor="#f9f3f3"
     card_view:cardCornerRadius="8dp"
     card_view:contentPadding="10dp"
     app:ignore="NamespaceTypo">
@@ -114,7 +114,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Note             : "
+                android:text="Note "
+                android:drawableEnd="@drawable/note_view_icon"
                 android:textColor="@color/black"
                 android:textSize="20dp"/>
         </LinearLayout>
